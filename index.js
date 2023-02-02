@@ -32,7 +32,7 @@ async function generateMessage(text, wait_for_model = false) {
                 return reject(err)
             }
         }).then(res => {
-            if(!res.data[0]) return resolve(-2)
+            if(res.status == 503) return resolve(-1)
 
             let result = res.data[0].generated_text
 
